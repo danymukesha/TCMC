@@ -46,7 +46,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
 BiocManager::install("TCMC")
 ```
 
-## Models Included
+## Models included
 
 TCMC includes the following classification algorithms:
 
@@ -64,23 +64,23 @@ TCMC includes the following classification algorithms:
 12. Naive Bayes (NB)
 13. Extreme Gradient Boosting (XGBoost)
 
-## Performance Metrics
+## Performance metrics
 
 The package uses accuracy as the primary metric for model comparison.
 However, it also provides confusion matrices for each model, allowing
 for the calculation of additional metrics such as sensitivity,
 specificity, and F1 score.
 
-## Variable Importance
+## Variable importance
 
 TCMC generates variable importance plots for each model,
 offering insights into feature relevance across different algorithms.
 
-## Limitations and Future Work
+## Limitations and future work
 
 - Currently limited to binary classification problems
 - Future versions will include support for multiclass classification and
-  regression tasks
+  regression tasks(or with a separate package)
 - Plans to incorporate more advanced hyperparameter tuning methods
 
 ## Citation
