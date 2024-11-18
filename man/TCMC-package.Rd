@@ -11,7 +11,8 @@ Streamlined approach to train, evaluate, and compare different classification al
 \seealso{
 Useful links:
 \itemize{
-  \item \url{}
+  \item \url{https://github.com/danymukesha/TCMC}
+  \item \url{https://danymukesha.github.io/TCMC/}
   \item Report bugs at \url{https://github.com/danymukesha/TCMC/issues}
 }
 

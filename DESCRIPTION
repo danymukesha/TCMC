@@ -3,13 +3,14 @@ Title: Compare Classification Models
 Version: 0.99.0
 Date: 2024-11-18
 Authors@R: 
-    person("Dany", "Mukesha", , "danymukesha@gmail.com", role = c("aut", "cre"),
+    person("Dany", "Mukesha", , "danymukesha@gmail.com", 
+            role = c("aut", "cre"),
            comment = c(ORCID = "0009-0001-9514-751X"))
 Description: Streamlined approach to train, evaluate, and compare
     different classification algorithms, by offering the user a robust
     framework for model selection in machine learning projects.
 License: Artistic-2.0
-URL: 
+URL: https://github.com/danymukesha/TCMC, https://danymukesha.github.io/TCMC/
 BugReports: https://github.com/danymukesha/TCMC/issues
 Imports: 
     C50,
@@ -17,6 +18,7 @@ Imports:
     gbm,
     klaR,
     mlbench,
+    SummarizedExperiment,
     tidyverse
 Suggests: 
     BiocStyle,

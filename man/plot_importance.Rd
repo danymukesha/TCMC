@@ -20,6 +20,6 @@ This function plots the variable importance for a given model.
 \examples{
 library(mlbench)
 data("PimaIndiansDiabetes", package = "mlbench")
-#results <- compare_models(PimaIndiansDiabetes, "diabetes")
+#results <- model_comparer(PimaIndiansDiabetes, "diabetes")
 #plot_importance(results$trained_models$lvq, "LVQ")
 }

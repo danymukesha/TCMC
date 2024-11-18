@@ -21,13 +21,8 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-    collapse = TRUE,
-    comment = "#>",
-    crop = NULL ## Related to https://stat.ethz.ch/pipermail/bioc-devel/2020-April/016656.html
-)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", crop = NULL)
 ```
-
 
 ```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
 startTime <- Sys.time()
@@ -48,14 +43,16 @@ bib <- c(
 
 ## Install `TCMC`
 
-`r Biocpkg("TCMC")` will be be soon available on [Bioconductor](http://bioconductor.org). 
+`r Biocpkg("TCMC")` will be be soon available on 
+[Bioconductor](http://bioconductor.org). 
 
 ```{r "install", eval = FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
 BiocManager::install("TCMC")
-BiocManager::valid()
+BiocManager::valid(
+)
 ```
 
 ## Citing `TCMC`
@@ -71,21 +68,40 @@ citation("TCMC")
 # Quick start to using `TCMC`
 
 ```{r "start", message=FALSE}
-library("TCMC")
+library(TCMC)
+library(mlbench)
 ```
 
-```{r usage, eval=FALSE}
+```{r data}
 data(PimaIndiansDiabetes)
+str(PimaIndiansDiabetes)
+```
 
-results <- compare_models(PimaIndiansDiabetes, "diabetes")
 
-# access trained models
-best_model <- results$trained_models$gbm
+```{r model, message=FALSE, warning=FALSE}
+# for this example only LVQ and GBM are being tested
+results <- model_comparer(PimaIndiansDiabetes, "diabetes", for_utest = TRUE)
+```
 
+```{r plot_vip}
 # plot variable importance for a specific model
 plot_importance(results$trained_models$lvq, "LVQ")
+plot_importance(results$trained_models$rf, "RF")
 ```
 
+```{r assess}
+# access trained models
+models_results <- resamples(results$trained_models)
+summary(models_results)
+```
+```{r plot_acc}
+bwplot(models_results)
+```
+
+```{r best_model}
+best_model <- results$performance$rf
+best_model
+```
 
 Here is an example of you can cite your package inside the vignette:
 
@@ -114,6 +130,6 @@ session_info()
 
 # Bibliography
 
-```{r vignetteBiblio, results = "asis", echo = FALSE, warning = FALSE, message = FALSE}
+```{r vignetteBiblio, results = "asis", echo = FALSE}
 PrintBibliography(bib, .opts = list(hyperlink = "to.doc", style = "html"))
 ```
