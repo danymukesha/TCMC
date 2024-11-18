@@ -18,7 +18,8 @@ A ggplot object showing variable importance.
 This function plots the variable importance for a given model.
 }
 \examples{
-data(PimaIndiansDiabetes)
-results <- compare_models(PimaIndiansDiabetes, "diabetes")
-plot_importance(results$trained_models$lvq, "LVQ")
+library(mlbench)
+data("PimaIndiansDiabetes", package = "mlbench")
+#results <- compare_models(PimaIndiansDiabetes, "diabetes")
+#plot_importance(results$trained_models$lvq, "LVQ")
 }

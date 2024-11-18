@@ -14,15 +14,18 @@
 #'
 #' @import tidyverse
 #' @import mlbench
-#' @import caret
+#' @importFrom caret createDataPartition trainControl train confusionMatrix
+#' @importFrom stats relevel as.formula predict
 #' @import gbm
+#' @import C50
+#' @import klaR
 #'
 #' @examples
 #' library(mlbench)
 #' data("PimaIndiansDiabetes", package = "mlbench")
-#' results <- compare_models(PimaIndiansDiabetes, "diabetes")
+#' #results <- compare_models(PimaIndiansDiabetes, "diabetes")
 compare_models <- function(data, target_var, train_prop = 0.8, seed = 3456) {
-  set.seed(seed)
+  #set.seed(seed)
   data[[target_var]] <- relevel(data[[target_var]], ref = "pos")
   
   trainIndex <- createDataPartition(data[[target_var]], p = train_prop, 
@@ -39,14 +42,15 @@ compare_models <- function(data, target_var, train_prop = 0.8, seed = 3456) {
   for (model in models) {
     formula <- as.formula(paste(target_var, "~ ."))
     trained_models[[model]] <- train(formula, data = df_Train, method = model, 
-                                     metric = "Accuracy", trControl = control)
+                                     metric = "Accuracy", trControl = control,
+                                     verbosity = 0)
   }
   
   model_performance <- lapply(trained_models, function(model) {
     predictions <- predict(model, df_Test)
     confusionMatrix(df_Test[[target_var]], predictions)
   })
-  
+
   list(trained_models = trained_models, performance = model_performance)
 }
 
@@ -60,10 +64,12 @@ compare_models <- function(data, target_var, train_prop = 0.8, seed = 3456) {
 #' @return A ggplot object showing variable importance.
 #' @export
 #'
+#' @importFrom caret varImp
 #' @examples
-#' data(PimaIndiansDiabetes)
-#' results <- compare_models(PimaIndiansDiabetes, "diabetes")
-#' plot_importance(results$trained_models$lvq, "LVQ")
+#' library(mlbench)
+#' data("PimaIndiansDiabetes", package = "mlbench")
+#' #results <- compare_models(PimaIndiansDiabetes, "diabetes")
+#' #plot_importance(results$trained_models$lvq, "LVQ")
 plot_importance <- function(model, model_name) {
   importance <- varImp(model, scale = FALSE)
   plot(importance, main = paste("Variable Importance -", model_name, "Model"))

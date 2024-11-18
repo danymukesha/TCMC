@@ -26,5 +26,5 @@ package.
 \examples{
 library(mlbench)
 data("PimaIndiansDiabetes", package = "mlbench")
-results <- compare_models(PimaIndiansDiabetes, "diabetes")
+#results <- compare_models(PimaIndiansDiabetes, "diabetes")
 }

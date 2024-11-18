@@ -17,7 +17,7 @@ train, evaluate, and compare 13 different classification algorithms,
 offering the user a framework for model selection in machine learning
 projects.
 
-## Features
+## What this tool does
 
 - Trains and compares 13 different classification models
 - Utilizes repeated cross-validation for robust performance estimation
@@ -44,23 +44,6 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
 BiocManager::install("TCMC")
-```
-
-## Usage
-
-Basic example of how to use TCMC:
-
-``` r
-library(TCMC)
-data(PimaIndiansDiabetes)
-
-results <- compare_models(PimaIndiansDiabetes, "diabetes")
-
-# access trained models
-best_model <- results$trained_models$gbm
-
-# plot variable importance for a specific model
-plot_importance(results$trained_models$lvq, "LVQ")
 ```
 
 ## Models Included

@@ -5,23 +5,19 @@ Date: 2024-11-18
 Authors@R: 
     person("Dany", "Mukesha", , "danymukesha@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0001-9514-751X"))
-Description: Streamlined approach to train, evaluate, and compare different 
-    classification algorithms, by offering researchers and data scientists 
-    a robust framework for model selection in machine learning projects.
+Description: Streamlined approach to train, evaluate, and compare
+    different classification algorithms, by offering the user a robust
+    framework for model selection in machine learning projects.
 License: Artistic-2.0
 URL: 
-BugReports: https://support.bioconductor.org/tag/TCMC
-biocViews: Software
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+BugReports: https://github.com/danymukesha/TCMC/issues
 Imports: 
-    tidyverse,
-    mlbench,
+    C50,
     caret,
     gbm,
     klaR,
-    C5.0
+    mlbench,
+    tidyverse
 Suggests: 
     BiocStyle,
     knitr,
@@ -29,5 +25,10 @@ Suggests:
     rmarkdown,
     sessioninfo,
     testthat (>= 3.0.0)
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+biocViews: Software, Classification
 Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
