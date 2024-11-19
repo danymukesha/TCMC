@@ -13,7 +13,7 @@
 check_forclass <- function(models) {
     if (!requireNamespace("caret", quietly = TRUE)) {
         stop("The 'caret' package is required but not installed. 
-             Please install it.")
+            Please install it.")
     }
     
     results <- lapply(models, function(model) {

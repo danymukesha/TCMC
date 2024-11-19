@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# TCMC: Tool for Classification Model Comparison
+# TCMC: Tool for Classification Model Comparison <a href="https://danymukesha.github.io/TCMC/"><img src="man/figures/logo.png" align="right" height="139" alt="BioGA website" /></a>
 
 <!-- badges: start -->
 

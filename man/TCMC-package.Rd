@@ -6,6 +6,8 @@
 \alias{TCMC-package}
 \title{TCMC: Compare Classification Models}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Streamlined approach to train, evaluate, and compare different classification algorithms, by offering the user a robust framework for model selection in machine learning projects.
 }
 \seealso{

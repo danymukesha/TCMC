@@ -17,6 +17,7 @@
 #' @import mlbench
 #' @importFrom caret createDataPartition trainControl train confusionMatrix
 #' @import gbm
+#' @import randomForest
 #' @importFrom stats relevel as.formula predict
 #' @import gbm
 #' @import C50
