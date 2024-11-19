@@ -50,7 +50,7 @@ Institute of Diabetes and Digestive and Kidney Diseases.
 \examples{
 library(mlbench)
 data("PimaIndiansDiabetes", package = "mlbench", for_utest = FALSE)
-#results <- model_comparer(PimaIndiansDiabetes, "diabetes")
+# results <- model_comparer(PimaIndiansDiabetes, "diabetes")
 }
 \references{
 Smith, J.W., Everhart, J.E., Dickson, W.C., Knowler, W.C.,

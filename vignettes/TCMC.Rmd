@@ -84,8 +84,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
 BiocManager::install("TCMC")
-BiocManager::valid(
-)
+BiocManager::valid()
 ```
 
 ## Citing `TCMC`
