@@ -67,6 +67,7 @@ bib <- c(
     rmarkdown = citation("rmarkdown")[1],
     sessioninfo = citation("sessioninfo")[1],
     testthat = citation("testthat")[1],
+    mlbench = citation("mlbench")[1],
     TCMC = citation("TCMC")[1]
 )
 ```
@@ -75,7 +76,7 @@ bib <- c(
 
 ## Install `TCMC`
 
-`r Biocpkg("TCMC")` will be soon available on 
+`r Biocpkg("TCMC")` package `r Citep(bib[["TCMC"]])` will be soon available on
 [Bioconductor](http://bioconductor.org). 
 
 ```{r "install", eval = FALSE}
@@ -99,7 +100,7 @@ citation("TCMC")
 
 # Quick start to using `TCMC`
 
-```{r "start", message=FALSE}
+```{r "start", message=FALSE, warning=FALSE}
 library(TCMC)
 library(mlbench)
 ```
@@ -139,6 +140,11 @@ Here is an example of you can cite your package inside the vignette:
 
 * `r Biocpkg("TCMC")` `r Citep(bib[["TCMC"]])`
 
+The data set utilized in the example is originally from the National 
+Institute of Diabetes and Digestive and Kidney Diseases. 
+
+* Source: `r CRANpkg("mlbench")` `r Citep(bib[["mlbench"]])`
+
 Date the vignette was generated.
 
 ```{r reproduce1, echo=FALSE}
@@ -162,6 +168,6 @@ session_info()
 
 # Bibliography
 
-```{r vignetteBiblio, results = "asis", echo = FALSE}
+```{r vignetteBiblio, results = "asis", echo = FALSE, warning = FALSE}
 PrintBibliography(bib, .opts = list(hyperlink = "to.doc", style = "html"))
 ```

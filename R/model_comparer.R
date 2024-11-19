@@ -9,6 +9,14 @@
 #' is 0.8).
 #' @param seed The random seed for reproducibility (default is 3456).
 #' @param for_utest only for unit test when is TRUE (FALSE by default).
+#' 
+#' @format The most important input arguments needed are \code{data} and 
+#' \code{target_var}:
+#' \describe{
+#'   \item{data}{contains 768 rows (observations) and 9 columns (features).} 
+#'   \item{target_var}{column containing a binary vector where 1 indicates 
+#'   diabetes patients and 0 for otherwise.}
+#' }
 #'
 #' @return A list containing the trained models and their performance metrics.
 #' @export
@@ -25,11 +33,17 @@
 #' 
 #' @details
 #' This data set utilized in the example is originally from the National 
-#' Institute of Diabetes and Digestive and Kidney Diseases.
+#' Institute of Diabetes and Digestive and Kidney Diseases. 
 #' 
 #' @source \url{https://www.kaggle.com/uciml/pima-indians-diabetes-database}
 #' 
 #' @seealso \url{https://avehtari.github.io/modelselection/diabetes.html}
+#' 
+#' @references Smith, J.W., Everhart, J.E., Dickson, W.C., Knowler, W.C., 
+#' & Johannes, R.S. (1988). Using the ADAP learning algorithm to forecast 
+#' the onset of diabetes mellitus. 
+#' \emph{In Proceedings of the Symposium on Computer Applications and 
+#' Medical Care} (pp. 261--265). IEEE Computer Society Press.
 #' 
 #' @examples
 #' library(mlbench)

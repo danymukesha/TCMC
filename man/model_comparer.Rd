@@ -3,6 +3,15 @@
 \name{model_comparer}
 \alias{model_comparer}
 \title{Compare Classification Models}
+\format{
+The most important input arguments needed are \code{data} and
+\code{target_var}:
+\describe{
+\item{data}{contains 768 rows (observations) and 9 columns (features).}
+\item{target_var}{column containing a binary vector where 1 indicates
+diabetes patients and 0 for otherwise.}
+}
+}
 \source{
 \url{https://www.kaggle.com/uciml/pima-indians-diabetes-database}
 }
@@ -42,6 +51,13 @@ Institute of Diabetes and Digestive and Kidney Diseases.
 library(mlbench)
 data("PimaIndiansDiabetes", package = "mlbench", for_utest = FALSE)
 #results <- model_comparer(PimaIndiansDiabetes, "diabetes")
+}
+\references{
+Smith, J.W., Everhart, J.E., Dickson, W.C., Knowler, W.C.,
+& Johannes, R.S. (1988). Using the ADAP learning algorithm to forecast
+the onset of diabetes mellitus.
+\emph{In Proceedings of the Symposium on Computer Applications and
+Medical Care} (pp. 261--265). IEEE Computer Society Press.
 }
 \seealso{
 \url{https://avehtari.github.io/modelselection/diabetes.html}

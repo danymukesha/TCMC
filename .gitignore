@@ -7,3 +7,4 @@ dev
 .DS_Store
 .quarto
 docs
+inst/doc
