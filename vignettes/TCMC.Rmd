@@ -5,6 +5,38 @@ author:
     affiliation:
     - Université Côte d'Azur
     email: danymukesha@gmail.com
+abstract: 
+    Machine learning model selection is a critical step in the development 
+    of predictive analytics projects. We introduce TCMC, an R package made 
+    to streamline the process of comparing and selecting classification models.
+    TCMC facilitates the evaluation of 13 diverse classification algorithms 
+    using the caret package, providing users with a clean framework for model
+    assessment.
+    
+    TCMC implements a powerful methodology, including repeated cross-validation
+    for performance estimation and the generation of variable importance plots. 
+    The package supports customizable training/test split ratios and produces 
+    confusion matrices for detailed model evaluation. The primary metric of 
+    TCMC for comparison is accuracy, but it also enables the calculation of 
+    additional metrics such as sensitivity, specificity, and F1 score.
+    
+    We demonstrate thE utility of package using the Pima Indians Diabetes 
+    dataset, comparing models such as Learning Vector Quantization (LVQ), 
+    Gradient Boosting Machine (GBM), Support Vector Machine (SVM), and 
+    Random Forest (RF), more others. The results showcase the ability of 
+    package to efficiently train multiple models and provide clear comparisons
+    of their performance.
+    
+    TCMC addresses the need for a standardized, reproducible approach to model
+    selection in classification tasks. By automating the comparison process 
+    and providing detailed performance metrics, it enables the user to make 
+    informed decisions about model selection, potentially improving the overall 
+    quality of predictive models in various domains.
+    
+    This tool contributes to the field of machine learning by offering 
+    a user-friendly, extensible platform for model comparison, suitable 
+    for both research and practical applications in data science and 
+    predictive analytics.
 output: 
   BiocStyle::html_document:
     self_contained: yes
@@ -43,7 +75,7 @@ bib <- c(
 
 ## Install `TCMC`
 
-`r Biocpkg("TCMC")` will be be soon available on 
+`r Biocpkg("TCMC")` will be soon available on 
 [Bioconductor](http://bioconductor.org). 
 
 ```{r "install", eval = FALSE}

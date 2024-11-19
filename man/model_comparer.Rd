@@ -3,6 +3,9 @@
 \name{model_comparer}
 \alias{model_comparer}
 \title{Compare Classification Models}
+\source{
+\url{https://www.kaggle.com/uciml/pima-indians-diabetes-database}
+}
 \usage{
 model_comparer(
   data,
@@ -31,8 +34,15 @@ A list containing the trained models and their performance metrics.
 This function compares 13 different classification models using the caret
 package.
 }
+\details{
+This data set utilized in the example is originally from the National
+Institute of Diabetes and Digestive and Kidney Diseases.
+}
 \examples{
 library(mlbench)
-data("PimaIndiansDiabetes", package = "mlbench")
+data("PimaIndiansDiabetes", package = "mlbench", for_utest = FALSE)
 #results <- model_comparer(PimaIndiansDiabetes, "diabetes")
+}
+\seealso{
+\url{https://avehtari.github.io/modelselection/diabetes.html}
 }

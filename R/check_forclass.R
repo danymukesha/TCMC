@@ -15,6 +15,7 @@ check_forclass <- function(models) {
         stop("The 'caret' package is required but not installed. 
             Please install it.")
     }
+    # names(getModelInfo())
     
     results <- lapply(models, function(model) {
         lookup <- caret::modelLookup(model)

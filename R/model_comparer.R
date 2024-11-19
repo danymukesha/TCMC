@@ -22,10 +22,18 @@
 #' @import gbm
 #' @import C50
 #' @import klaR
-#'
+#' 
+#' @details
+#' This data set utilized in the example is originally from the National 
+#' Institute of Diabetes and Digestive and Kidney Diseases.
+#' 
+#' @source \url{https://www.kaggle.com/uciml/pima-indians-diabetes-database}
+#' 
+#' @seealso \url{https://avehtari.github.io/modelselection/diabetes.html}
+#' 
 #' @examples
 #' library(mlbench)
-#' data("PimaIndiansDiabetes", package = "mlbench")
+#' data("PimaIndiansDiabetes", package = "mlbench", for_utest = FALSE)
 #' #results <- model_comparer(PimaIndiansDiabetes, "diabetes")
 model_comparer <- function(data, target_var, train_prop = 0.8, seed = 3456, 
                     for_utest = FALSE) {
@@ -75,7 +83,8 @@ model_comparer <- function(data, target_var, train_prop = 0.8, seed = 3456,
 #' @examples
 #' library(mlbench)
 #' data("PimaIndiansDiabetes", package = "mlbench")
-#' #results <- model_comparer(PimaIndiansDiabetes, "diabetes")
+#' #results <- model_comparer(PimaIndiansDiabetes, "diabetes", 
+#' #    for_utest = FALSE)
 #' #plot_importance(results$trained_models$lvq, "LVQ")
 plot_importance <- function(model, model_name) {
     importance <- varImp(model, scale = FALSE)
