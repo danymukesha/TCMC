@@ -20,7 +20,7 @@ abstract:
     TCMC for comparison is accuracy, but it also enables the calculation of 
     additional metrics such as sensitivity, specificity, and F1 score.
     
-    We demonstrate thE utility of package using the Pima Indians Diabetes 
+    We demonstrate the utility of package using the Pima Indians Diabetes 
     dataset, comparing models such as Learning Vector Quantization (LVQ), 
     Gradient Boosting Machine (GBM), Support Vector Machine (SVM), and 
     Random Forest (RF), more others. The results showcase the ability of 
@@ -62,6 +62,7 @@ library("RefManageR")
 bib <- c(
     R = citation(),
     BiocStyle = citation("BiocStyle")[1],
+    SummarizedExperiment = citation("SummarizedExperiment")[1],
     knitr = citation("knitr")[1],
     RefManageR = citation("RefManageR")[1],
     rmarkdown = citation("rmarkdown")[1],
@@ -76,8 +77,7 @@ bib <- c(
 
 ## Install `TCMC`
 
-`r Biocpkg("TCMC")` package `r Citep(bib[["TCMC"]])` will be soon available on
-[Bioconductor](http://bioconductor.org). 
+`r Biocpkg("TCMC")` package `r Citep(bib[["TCMC"]])` will be soon available on [Bioconductor](http://bioconductor.org).
 
 ```{r "install", eval = FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
@@ -89,9 +89,9 @@ BiocManager::valid()
 
 ## Citing `TCMC`
 
-I hope that `r Biocpkg("TCMC")` will be useful for research. 
-Please use the following information to cite the package 
-and the overall approach. Thank you!
+I hope that `r Biocpkg("TCMC")` will be useful for research. Please use
+the following information to cite the package and the overall approach. 
+Thank you!
 
 ```{r "citation"}
 citation("TCMC")
@@ -109,7 +109,6 @@ data(PimaIndiansDiabetes)
 str(PimaIndiansDiabetes)
 ```
 
-
 ```{r model, message=FALSE, warning=FALSE}
 # for this example only LVQ and GBM are being tested
 results <- model_comparer(PimaIndiansDiabetes, "diabetes", for_utest = TRUE)
@@ -126,6 +125,7 @@ plot_importance(results$trained_models$rf, "RF")
 models_results <- resamples(results$trained_models)
 summary(models_results)
 ```
+
 ```{r plot_acc}
 bwplot(models_results)
 ```
@@ -135,14 +135,88 @@ best_model <- results$performance$rf
 best_model
 ```
 
+# Example with `SummarizedExperiment`
+
+Example integrated with `r Biocpkg("SummarizedExperiment")` `r Citep(bib[["SummarizedExperiment"]])` with machine learning workflows 
+for evaluating treatment effectiveness.
+
+-   ***Scenario description***: In this example, we investigate 
+the effectiveness of different treatments in influencing positive outcomes
+for a simulated clinical dataset. Each treatment corresponds to a class 
+of drugs (e.g., TZD and DPP-4), and the outcome variable indicates whether 
+the response to treatment was positive or negative. Using the 
+`r Biocpkg("SummarizedExperiment")` `r Citep(bib[["SummarizedExperiment"]])` 
+class from Bioconductor, we will preprocess the data, train machine learning
+models, and analyze the most impactful features and models.
+
+-   ***Data simulation***: The dataset contains measurements of sugar levels
+across eight samples, along with metadata describing treatment classes 
+and outcomes. The 
+`r Biocpkg("SummarizedExperiment")` `r Citep(bib[["SummarizedExperiment"]])` 
+object is used to organize and manage this data.
+
+```{r initial_class, warning=FALSE, message=FALSE}
+library(SummarizedExperiment)
+
+# Simulate data
+nrows <- 200 # Number of features (e.g., genes or biomarkers)
+ncols <- 8  # Number of samples
+sugar_level <- matrix(runif(nrows * ncols, 1, 500), nrows)
+
+# Metadata: treatment classes and outcomes
+colData <- DataFrame(Treatment_class = rep(c("TZD", "DPP-4"), 4),
+        row.names = LETTERS[1:8])
+Outcome <- DataFrame(Outcome = (rep(c("neg", "pos"), 5)))
+se0 <- SummarizedExperiment(assays = SimpleList(counts = sugar_level),
+        colData = colData, metadata = Outcome)
+```
+
+```{r formatting}
+# in the case the input is a SummarizedExperiment, extract assay and metadata
+if (inherits(se0, "SummarizedExperiment")) {
+    data <- as.data.frame(assay(se0))
+    metadata <- as.data.frame(metadata(se0))
+    data_df <- cbind(metadata, data)
+}
+feature_names <- c("Outcome",
+    "TreatmentA", "TreatmentB", "TreatmentC", "TreatmentD", 
+    "TreatmentE", "TreatmentF", "TreatmentG", "TreatmentH"
+)
+colnames(data_df) <- feature_names
+data_df$Outcome <- data_df$Outcome |> as.factor()
+str(data_df) 
+
+```
+
+```{r results_outcome, warning=FALSE}
+results <- model_comparer(data = data_df, "Outcome", for_utest = TRUE)
+```
+
+```{r plot_vis_outcome}
+plot_importance(results$trained_models$lvq, "LVQ")
+plot_importance(results$trained_models$rf, "RF")
+
+models_results <- resamples(results$trained_models)
+summary(models_results)
+
+bwplot(models_results)
+
+best_model <- results$performance$rf
+best_model
+```
+
+By identifying the most predictive treatments and features, 
+we can inform clinical decision-making and prioritize interventions 
+that maximize positive outcomes.
+
 Here is an example of you can cite your package inside the vignette:
 
-* `r Biocpkg("TCMC")` `r Citep(bib[["TCMC"]])`
+-   `r Biocpkg("TCMC")` `r Citep(bib[["TCMC"]])`
 
 The data set utilized in the example is originally from the National 
-Institute of Diabetes and Digestive and Kidney Diseases. 
+Institute of Diabetes and Digestive and Kidney Diseases.
 
-* Source: `r CRANpkg("mlbench")` `r Citep(bib[["mlbench"]])`
+-   Source: `r CRANpkg("mlbench")` `r Citep(bib[["mlbench"]])`
 
 Date the vignette was generated.
 
