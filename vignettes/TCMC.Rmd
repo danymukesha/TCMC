@@ -77,7 +77,8 @@ bib <- c(
 
 ## Install `TCMC`
 
-`r Biocpkg("TCMC")` package `r Citep(bib[["TCMC"]])` will be soon available on [Bioconductor](http://bioconductor.org).
+`r Biocpkg("TCMC")` package `r Citep(bib[["TCMC"]])` will be soon available 
+on [Bioconductor](http://bioconductor.org).
 
 ```{r "install", eval = FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
@@ -137,8 +138,9 @@ best_model
 
 # Example with `SummarizedExperiment`
 
-Example integrated with `r Biocpkg("SummarizedExperiment")` `r Citep(bib[["SummarizedExperiment"]])` with machine learning workflows 
-for evaluating treatment effectiveness.
+Example integrated with 
+`r Biocpkg("SummarizedExperiment")` `r Citep(bib[["SummarizedExperiment"]])` 
+with machine learning workflows for evaluating treatment effectiveness.
 
 -   ***Scenario description***: In this example, we investigate 
 the effectiveness of different treatments in influencing positive outcomes
