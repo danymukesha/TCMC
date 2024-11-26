@@ -285,10 +285,10 @@ manage this data.</p></li>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/model_comparer.html">model_comparer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_df</span>, <span class="st">"Outcome"</span>, for_utest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_importance.html">plot_importance</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">trained_models</span><span class="op">$</span><span class="va">lvq</span>, <span class="st">"LVQ"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_importance.html">plot_importance</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">trained_models</span><span class="op">$</span><span class="va">lvq</span>, <span class="st">"LVQ"</span>, type_plot <span class="op">=</span> <span class="st">"enhanced"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TCMC_files/figure-html/plot_vis_outcome-1.png" width="700"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_importance.html">plot_importance</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">trained_models</span><span class="op">$</span><span class="va">rf</span>, <span class="st">"RF"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_importance.html">plot_importance</a></span><span class="op">(</span><span class="va">results</span><span class="op">$</span><span class="va">trained_models</span><span class="op">$</span><span class="va">rf</span>, <span class="st">"RF"</span>, type_plot <span class="op">=</span> <span class="st">"basic"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="TCMC_files/figure-html/plot_vis_outcome-2.png" width="700"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
@@ -361,9 +361,9 @@ Institute of Diabetes and Digestive and Kidney Diseases.</p>
 (Leisch and Dimitriadou, 2024)</li>
 </ul>
 <p>Date the vignette was generated.</p>
-<pre><code><span><span class="co">#&gt; [1] "2024-11-26 10:26:25 UTC"</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; [1] "2024-11-26 14:36:12 UTC"</span></span></code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code><span><span class="co">#&gt; Time difference of 38.402 secs</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Time difference of 36.704 secs</span></span></code></pre>
 <p><code>R</code> session information.</p>
 <pre><code><span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt;  <span style="color: #555555; font-style: italic;">setting </span> <span style="color: #555555; font-style: italic;">value</span></span></span>

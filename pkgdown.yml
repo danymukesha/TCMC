@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   TCMC: TCMC.html
-last_built: 2024-11-26T10:25Z
+last_built: 2024-11-26T14:35Z
 urls:
   reference: https://danymukesha.github.io/TCMC/reference
   article: https://danymukesha.github.io/TCMC/articles
