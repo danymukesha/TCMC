@@ -8,3 +8,6 @@ dev
 .quarto
 docs
 inst/doc
+inst/logo.R
+.Rbuildignore
+pkgdown/

@@ -1,8 +1,8 @@
 library(testthat)
 
-test_that("check_classification_models filters correctly", {
+test_that("check_forclass filters correctly", {
     models <- c("lvq", "gbm", "svmRadial")
-    result <- check_classification_models(models)
+    result <- check_forclass(models)
     expect_s3_class(result, "data.frame")
     expect_true(all(c(
         "model", "parameter", "label", "forReg", "forClass",
