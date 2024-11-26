@@ -16,11 +16,15 @@ Imports:
     C50,
     caret,
     gbm,
+    graphics,
+    grDevices,
     klaR,
     mlbench,
     randomForest,
+    S4Vectors,
     SummarizedExperiment,
-    tidyverse
+    tidyverse,
+    utils
 Suggests: 
     BiocStyle,
     knitr,

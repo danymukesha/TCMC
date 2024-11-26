@@ -195,8 +195,8 @@ results <- model_comparer(data = data_df, "Outcome", for_utest = TRUE)
 ```
 
 ```{r plot_vis_outcome}
-plot_importance(results$trained_models$lvq, "LVQ")
-plot_importance(results$trained_models$rf, "RF")
+plot_importance(results$trained_models$lvq, "LVQ", type_plot = "enhanced")
+plot_importance(results$trained_models$rf, "RF", type_plot = "basic")
 
 models_results <- resamples(results$trained_models)
 summary(models_results)

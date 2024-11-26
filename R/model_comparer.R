@@ -94,20 +94,44 @@ model_comparer <- function(data, target_var, train_prop = 0.8, seed = 3456,
 #'
 #' @param model A trained model object.
 #' @param model_name The name of the model (used for the plot title).
+#' @param type_plot The type of plot `basic` or `enhanced` (default "basic").
 #'
 #' @return A ggplot object showing variable importance.
 #' @export
 #'
-#' @importFrom caret varImp
+#' @importFrom caret varImp 
+#' @importFrom graphics barplot  par
+#' @importFrom grDevices colorRampPalette
 #' @examples
 #' library(mlbench)
 #' data("PimaIndiansDiabetes", package = "mlbench")
 #' # results <- model_comparer(PimaIndiansDiabetes, "diabetes",
 #' #    for_utest = FALSE)
 #' # plot_importance(results$trained_models$lvq, "LVQ")
-plot_importance <- function(model, model_name) {
+plot_importance <- function(model, model_name, type_plot = "basic") {
     importance <- varImp(model, scale = FALSE)
-    plot(importance,
-        main = paste("Variable Importance -", model_name, "Model")
-    )
+    if (type_plot == "basic") {
+        plot(importance, 
+            main = paste("Variable Importance -", model_name, "Model"))
+    } else if (type_plot == "enhanced") {
+        importance <- as.data.frame(importance$importance)
+        importance$Variable <- rownames(importance)
+        importance <- importance[order(importance[, 1], 
+            decreasing = FALSE), ]
+        
+        colors <- 
+            colorRampPalette(c("green", "yellow", "red"))(nrow(importance))
+        
+        par(mar = c(5, 8, 4, 2))
+        barplot( height = importance[, 1], names.arg = importance$Variable,
+            horiz = TRUE, las = 1, col = colors, border = "black",
+            main = paste("Variable Importance -", model_name, "Model"),
+            xlab = "Importance"
+        )
+    } else {
+        message("This type of plot is not yet implement
+    if you want this type to be included
+    Please contact danymukesha@gmail.com. Thank you!")
+    }
 }
+

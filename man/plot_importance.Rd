@@ -4,12 +4,14 @@
 \alias{plot_importance}
 \title{Plot Variable Importance}
 \usage{
-plot_importance(model, model_name)
+plot_importance(model, model_name, type_plot = "basic")
 }
 \arguments{
 \item{model}{A trained model object.}
 
 \item{model_name}{The name of the model (used for the plot title).}
+
+\item{type_plot}{The type of plot \code{basic} or \code{enhanced} (default "basic").}
 }
 \value{
 A ggplot object showing variable importance.
